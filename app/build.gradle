@@ -1,14 +1,20 @@
 apply plugin: 'com.android.application'
 
+boolean module_1_is_application=Boolean.parseBoolean(project.property("MODULE_1_IS_APPLICATION"))
 
 int version_code=Integer.parseInt(project.property("VERSION_CODE"));
 String version_name=project.property("VERSION_NAME")
+
+int min_sdk_version=Integer.parseInt(project.property("MIN_SDK_VERSION"));
+int target_sdk_version=Integer.parseInt(project.property("TARGET_SDK_VERSION"));
+int compile_sdk_version=Integer.parseInt(project.property("COMPILE_SDK_VERSION"));
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_sdk_version
     defaultConfig {
         applicationId "com.fxj.simplerouterdemo"
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -28,4 +34,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    if(!module_1_is_application){
+        implementation project(':module_1')
+    }
 }

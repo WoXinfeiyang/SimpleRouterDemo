@@ -1,13 +1,24 @@
-apply plugin: 'com.android.application'
+boolean module_1_is_application=Boolean.parseBoolean(project.property("MODULE_1_IS_APPLICATION"))
+if(module_1_is_application){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+int min_sdk_version=Integer.parseInt(project.property("MIN_SDK_VERSION"));
+int target_sdk_version=Integer.parseInt(project.property("TARGET_SDK_VERSION"));
+int compile_sdk_version=Integer.parseInt(project.property("COMPILE_SDK_VERSION"));
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_sdk_version
 
 
     defaultConfig {
-        applicationId "com.fxj.module_1"
-        minSdkVersion 15
-        targetSdkVersion 28
+        if(module_1_is_application){/*Library是不能设置applicationId*/
+            applicationId "com.fxj.module_1"
+        }
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
         versionCode 1
         versionName "1.0"
 
@@ -21,6 +32,16 @@ android {
         }
     }
 
+    sourceSets{
+        main{
+            /*定义module在application和library模式下对于不同的AndroidManifest文件*/
+            if(MODULE_1_IS_APPLICATION){
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }else{
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
