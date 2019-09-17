@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 boolean module_1_is_application=Boolean.parseBoolean(project.property("MODULE_1_IS_APPLICATION"))
+boolean module_2_is_application=Boolean.parseBoolean(project.property("MODULE_2_IS_APPLICATION"))
 
 int version_code=Integer.parseInt(project.property("VERSION_CODE"));
 String version_name=project.property("VERSION_NAME")
@@ -37,5 +38,9 @@ dependencies {
 
     if(!module_1_is_application){
         implementation project(':module_1')
+    }
+
+    if(!module_2_is_application){
+        implementation project(':module_2')
     }
 }

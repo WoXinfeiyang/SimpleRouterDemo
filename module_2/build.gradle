@@ -1,5 +1,5 @@
-boolean module_1_is_application=Boolean.parseBoolean(project.property("MODULE_1_IS_APPLICATION"))
-if(module_1_is_application){
+boolean module_2_is_application=Boolean.parseBoolean(project.property("MODULE_2_IS_APPLICATION"))
+if(module_2_is_application){
     apply plugin: 'com.android.application'
 }else{
     apply plugin: 'com.android.library'
@@ -8,14 +8,16 @@ if(module_1_is_application){
 int min_sdk_version=Integer.parseInt(project.property("MIN_SDK_VERSION"));
 int target_sdk_version=Integer.parseInt(project.property("TARGET_SDK_VERSION"));
 int compile_sdk_version=Integer.parseInt(project.property("COMPILE_SDK_VERSION"));
+String build_tools_version=project.property("BUILD_TOOLS_VERSION")
 
 android {
     compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
 
 
     defaultConfig {
-        if(module_1_is_application){/*Library是不能设置applicationId*/
-            applicationId "com.fxj.module_1"
+        if(module_2_is_application){
+            applicationId "com.fxj.module_2"
         }
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
@@ -35,7 +37,7 @@ android {
     sourceSets{
         main{
             /*定义module在application和library模式下对于不同的AndroidManifest文件*/
-            if(module_1_is_application){
+            if(module_2_is_application){
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             }else{
                 manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
@@ -47,9 +49,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

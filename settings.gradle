@@ -1,2 +1,2 @@
-include ':app', ':module_1'
+include ':app', ':module_1', ':module_2'
 rootProject.name='SimpleRouterDemo'
