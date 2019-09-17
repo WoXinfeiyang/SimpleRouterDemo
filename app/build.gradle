@@ -1,13 +1,16 @@
 apply plugin: 'com.android.application'
 
+
+int version_code=Integer.parseInt(project.property("VERSION_CODE"));
+String version_name=project.property("VERSION_NAME")
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.fxj.simplerouterdemo"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode version_code
+        versionName version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

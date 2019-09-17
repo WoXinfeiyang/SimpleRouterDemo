@@ -48,3 +48,5 @@ workspace.xml
 
 # Keystore files
 *.jks
+
+*.iml
