@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.fxj.simpleRouterAnnotation.Router;
+import com.fxj.simplerouter.SimpleRouter;
 
 @Router(path = "MainActivity")
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tvVersionInfo;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             tvVersionInfo.setVisibility(View.GONE);
         }
+        findViewById(R.id.btn01).setOnClickListener(this);
     }
 
     String getVersionName(Context context){
@@ -41,4 +43,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return versionName;
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn01:
+                SimpleRouter.getInstance().navigation("module1/main",null);
+                break;
+        }
+    }
 }

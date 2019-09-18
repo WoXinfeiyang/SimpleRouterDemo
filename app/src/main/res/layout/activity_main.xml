@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -14,7 +15,16 @@
         android:text="Module app#MainActivity"
         android:textSize="20dp"
         />
-
+    <Button
+        android:id="@+id/btn01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="2dp"
+        android:textSize="17dp"
+        android:text="gotoModule1MainActivity"
+        />
     <TextView
         android:id="@+id/tv_version_info"
         android:layout_width="wrap_content"
