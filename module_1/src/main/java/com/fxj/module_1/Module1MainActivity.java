@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.fxj.simpleRouterAnnotation.Router;
+
+@Router(path="module1/main")
 public class Module1MainActivity extends AppCompatActivity {
 
     @Override
