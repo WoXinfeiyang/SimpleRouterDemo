@@ -6,8 +6,8 @@ dependencies {
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc4'
     compileOnly 'com.google.auto.service:auto-service:1.0-rc4'
     /*依赖Google注解处理器服务包*/
-//    implementation 'com.google.auto.service:auto-service:1.0-rc3'
-
+//    implementation 'com.google.auto.service:auto-service:1.0-rc4'
+    implementation 'com.squareup:javapoet:1.9.0' //javapoet代码生成框
     implementation project(path: ':simpleRouterAnnotation')
 }
 
