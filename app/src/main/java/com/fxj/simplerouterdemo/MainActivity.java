@@ -9,6 +9,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.fxj.simpleRouterAnnotation.Router;
+
+@Router(path = "MainActivity")
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvVersionInfo;

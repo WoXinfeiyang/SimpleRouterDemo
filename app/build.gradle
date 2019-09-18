@@ -43,4 +43,8 @@ dependencies {
     if(!module_2_is_application){
         implementation project(':module_2')
     }
+
+    implementation project(path: ':simpleRouter')
+    implementation project(path: ':simpleRouterAnnotation')
+    annotationProcessor project(path: ':simpleRouterCompiler')
 }
