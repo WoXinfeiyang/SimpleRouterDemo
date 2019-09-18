@@ -24,6 +24,7 @@
         android:layout_margin="2dp"
         android:textSize="17dp"
         android:text="gotoModule1MainActivity"
+        android:textAllCaps="false"
         />
     <TextView
         android:id="@+id/tv_version_info"

@@ -100,10 +100,11 @@ public class SimpleRouter {
             Context currentContext=context!=null?context:mContext;
             Class<? extends Activity> activityClazz=activities.get(path);
             if(activityClazz==null){
+                Log.e(TAG,"**navigation**对应Activity没有注册到SimpleRouter!");
                 return;
             }
 
-            String msg="currentContext="+currentContext+",path="+path+",bundle"+bundle+",activityClazz="+activityClazz!=null?activityClazz.getCanonicalName():null;
+            String msg="**navigation**currentContext="+currentContext+",path="+path+",bundle"+bundle+",activityClazz="+activityClazz!=null?activityClazz.getCanonicalName():null;
             Log.d(TAG,msg);
 
             Intent intent=new Intent(context,activityClazz);
