@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
 
@@ -36,7 +37,7 @@ public class RouteProcessor extends BaseProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println(TAG+"**start**");
+        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**start");
         /*通过此方法拿到这个模块下面所有用到Router这个注解的节点*/
         Set<? extends Element> elements =roundEnv.getElementsAnnotatedWith(Router.class);
         /*存储注解@Router的path和类签名,k--注解@Router的path和,v--被注解@Router修饰的类签名*/
@@ -111,7 +112,7 @@ public class RouteProcessor extends BaseProcessor {
             }
         }
 
-        System.out.println(TAG+"**end**");
+        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**end");
         return true;
     }
 }
