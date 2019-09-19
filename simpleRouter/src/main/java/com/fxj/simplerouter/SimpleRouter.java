@@ -104,7 +104,7 @@ public class SimpleRouter {
                 return;
             }
 
-            String msg="**navigation**currentContext="+currentContext+",path="+path+",bundle"+bundle+",activityClazz="+activityClazz!=null?activityClazz.getCanonicalName():null;
+            String msg="**navigation**currentContext="+currentContext+",path="+path+",bundle="+bundle+",activityClazz="+(activityClazz!=null?activityClazz.getCanonicalName():null);
             Log.d(TAG,msg);
 
             Intent intent=new Intent().setClass(currentContext,activityClazz);
