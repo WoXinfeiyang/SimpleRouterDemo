@@ -86,7 +86,7 @@ public class RouteProcessor extends BaseProcessor {
                         "\n" +
                         "public class "+classNameForIRouter+" implements IRouter {\n" +
                         "    @Override\n" +
-                        "    public void loadInto() {");
+                        "    public void loadInto() {\n");
 
                 Iterator<String> iterator=activitiesInfo.keySet().iterator();
                 while(iterator.hasNext()){
