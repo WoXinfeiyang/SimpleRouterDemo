@@ -47,7 +47,7 @@ public class SimpleRouter {
             for(String className:classNames){
                 try {
                    Class<?> aClass =Class.forName(className);
-                   if(IRouter.class.isAssignableFrom(aClass)){
+                   if(IRouter.class.isAssignableFrom(aClass)){/*如果IRouter是aClass的父接口*/
                        IRouter iRouter= (IRouter) aClass.newInstance();
                        iRouter.loadInto();
                    }
