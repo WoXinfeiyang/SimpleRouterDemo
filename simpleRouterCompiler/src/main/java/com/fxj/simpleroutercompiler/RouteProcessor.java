@@ -37,7 +37,7 @@ public class RouteProcessor extends BaseProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**start");
+        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**RouteProcessor.process**start");
         /*通过此方法拿到这个模块下面所有用到Router这个注解的节点*/
         Set<? extends Element> elements =roundEnv.getElementsAnnotatedWith(Router.class);
         /*存储注解@Router的path和类签名,k--注解@Router的path和,v--被注解@Router修饰的类签名*/
@@ -49,14 +49,14 @@ public class RouteProcessor extends BaseProcessor {
             String className= typeElement.getQualifiedName().toString();/*获取这个类节点的类签名*/
             activitiesInfo.put(path,className);
         }
-
+        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**RouteProcessor.process**activitiesInfo.size()="+activitiesInfo.size());
         if(activitiesInfo.size()>0){
             Writer writer=null;
             /*定义com.fxj.simplerouter.IRouter实现类的包名*/
             String packageNameForIRouter="com.fxj.irouterimpl";
             /*定义com.fxj.simplerouter.IRouter实现类的类名,之所以加时间戳是为了避免在不同模块下生成的IRouter实现类的类名相同*/
             String classNameForIRouter="IRouterImpl"+System.currentTimeMillis();
-
+            mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**RouteProcessor.process**classNameForIRouter="+classNameForIRouter);
             try {
                 /*创建一个.java源文件*/
                 JavaFileObject sourceFileForIRouterImpl=filer.createSourceFile(packageNameForIRouter+"."+classNameForIRouter);
@@ -92,7 +92,7 @@ public class RouteProcessor extends BaseProcessor {
                 while(iterator.hasNext()){
                     String path=iterator.next();
                     String activityClassName=activitiesInfo.get(path);
-//                    writer.write("        log.d("+classNameForIRouter+",\"path=\""+path+",className=\""+activityClassName+");\n");
+                    mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**RouteProcessor.process**path="+path+",activityClassName="+activityClassName);
                     writer.write("        SimpleRouter.getInstance().putActivity(\""+path+"\","+activityClassName+".class);\n");
                 }
 
@@ -112,7 +112,7 @@ public class RouteProcessor extends BaseProcessor {
             }
         }
 
-        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**end");
+        mMessager.printMessage(Diagnostic.Kind.NOTE,TAG+"**RouteProcessor.process**end");
         return true;
     }
 }
