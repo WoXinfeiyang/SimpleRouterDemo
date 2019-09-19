@@ -107,7 +107,7 @@ public class SimpleRouter {
             String msg="**navigation**currentContext="+currentContext+",path="+path+",bundle"+bundle+",activityClazz="+activityClazz!=null?activityClazz.getCanonicalName():null;
             Log.d(TAG,msg);
 
-            Intent intent=new Intent(context,activityClazz);
+            Intent intent=new Intent().setClass(currentContext,activityClazz);
             if(bundle!=null){
                 intent.putExtra("bundle",bundle);
             }

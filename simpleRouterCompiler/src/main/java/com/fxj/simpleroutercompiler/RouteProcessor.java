@@ -2,7 +2,6 @@ package com.fxj.simpleroutercompiler;
 
 import com.fxj.simpleRouterAnnotation.Router;
 import com.google.auto.service.AutoService;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashSet;
@@ -11,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
@@ -22,7 +22,7 @@ import javax.tools.JavaFileObject;
 /**
  * Router注解处理器
  * */
-@AutoService(Process.class)/*注册注解处理器*/
+@AutoService(Processor.class)/*注册注解处理器*/
 public class RouteProcessor extends BaseProcessor {
 
     private static final String TAG=RouteProcessor.class.getSimpleName();
@@ -59,7 +59,7 @@ public class RouteProcessor extends BaseProcessor {
 
             try {
                 /*创建一个.java源文件*/
-                JavaFileObject sourceFileForIRouterImpl=filer.createSourceFile(packageNameForIRouter+classNameForIRouter);
+                JavaFileObject sourceFileForIRouterImpl=filer.createSourceFile(packageNameForIRouter+"."+classNameForIRouter);
                 writer=sourceFileForIRouterImpl.openWriter();
 
                 /*
@@ -78,13 +78,13 @@ public class RouteProcessor extends BaseProcessor {
                 }
                 * */
 
-                writer.write(packageNameForIRouter+";\n" +
+                writer.write("package  "+packageNameForIRouter+";\n" +
                         "\n" +
                         "import com.fxj.simplerouter.IRouter;\n" +
                         "import com.fxj.simplerouter.SimpleRouter;\n" +
 //                        "import android.util.Log;\n"+
                         "\n" +
-                        "public class IRouterImpl implements IRouter {\n" +
+                        "public class "+classNameForIRouter+" implements IRouter {\n" +
                         "    @Override\n" +
                         "    public void loadInto() {");
 
