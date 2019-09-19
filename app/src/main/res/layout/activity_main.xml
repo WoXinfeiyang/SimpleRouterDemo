@@ -26,6 +26,19 @@
         android:text="gotoModule1MainActivity"
         android:textAllCaps="false"
         />
+
+    <Button
+        android:id="@+id/btn02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn01"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="2dp"
+        android:textSize="17dp"
+        android:text="gotoModule2MainActivity"
+        android:textAllCaps="false"
+        />
+
     <TextView
         android:id="@+id/tv_version_info"
         android:layout_width="wrap_content"

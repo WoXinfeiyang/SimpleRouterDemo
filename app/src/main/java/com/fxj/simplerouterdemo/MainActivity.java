@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvVersionInfo.setVisibility(View.GONE);
         }
         findViewById(R.id.btn01).setOnClickListener(this);
+        findViewById(R.id.btn02).setOnClickListener(this);
     }
 
     String getVersionName(Context context){
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btn01:
                 SimpleRouter.getInstance().navigation("module1/main",null);
+                break;
+
+            case R.id.btn02:
+                SimpleRouter.getInstance().navigation(this,"module2/main",null);
                 break;
         }
     }
