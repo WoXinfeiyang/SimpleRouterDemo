@@ -68,6 +68,7 @@ public class SimpleRouter {
         try {
             /*通过PackageManager获取到ApplicationInfo,然后获取到apk的完整路径*/
             path= mContext.getPackageManager().getApplicationInfo(mContext.getPackageName(), 0).sourceDir;
+            Log.d(TAG,"##getClassName##path="+path);
             DexFile df = new DexFile(path);//根据apk完整路径获取编译后的dex文件
             Enumeration<String> enumeration = df.entries();//获取df中的元素  这里包含了所有可执行的类名 该类名包含了包名+类名的方式
             while (enumeration.hasMoreElements()) {//遍历
